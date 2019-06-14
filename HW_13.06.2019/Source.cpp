@@ -22,12 +22,14 @@ int main() {
 	auto start = Clock::now();
 	while (!in_file.eof()) {
 		in_file >> str;
+		transform(str.begin(), str.end(), str.begin(), tolower);//перевод в нижний регистр
 		deq.push_back(str);//запись в декью
 	}
 
-	for_each(deq.begin(), deq.end(), [](string s) {
-		transform(s.begin(), s.end(), s.begin(), ::tolower);//перевод в нижний регистр
-	});
+	//for_each(deq.begin(), deq.end(), [](string s) {
+	//	transform(s.begin(), s.end(), s.begin(), tolower);//почему не работает в теле for_each()???
+	//	//_strlwr(s.c_str());
+	//});
 
 	sort(deq.begin(), deq.end());//сортировка
 
